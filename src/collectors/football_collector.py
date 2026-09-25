@@ -7,9 +7,12 @@ from src.collectors.db_handler import salvar_jogo
 
 # IDs das ligas monitoradas
 LIGAS = {
-    "Brasileirão Série A": 71,
-    "Premier League":      39,
-    "Champions League":    2,
+    "Brasileirão Série A": {"id": 71, "season": 2026},
+    "Brasileirão Série B": {"id": 72, "season": 2026},
+    "Premier League":      {"id": 39, "season": 2025},
+    "Champions League":    {"id": 2,  "season": 2025},
+    "Bundesliga":          {"id": 78, "season": 2025},
+
 }
 
 BASE_URL = "https://v3.football.api-sports.io"

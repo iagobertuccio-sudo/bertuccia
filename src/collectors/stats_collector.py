@@ -8,9 +8,11 @@ BASE_URL = "https://v3.football.api-sports.io"
 HEADERS  = {"x-apisports-key": API_FOOTBALL_KEY}
 
 LIGAS = {
-    "Brasileirão Série A": {"id": 71,  "season": 2025},
-    "Premier League":      {"id": 39,  "season": 2025},
-    "Champions League":    {"id": 2,   "season": 2025},
+    "Brasileirão Série A": {"id": 71, "season": 2026},
+    "Brasileirão Série B": {"id": 72, "season": 2026},
+    "Premier League":      {"id": 39, "season": 2025},
+    "Champions League":    {"id": 2,  "season": 2025},
+    "Bundesliga":          {"id": 78, "season": 2025},
 }
 
 

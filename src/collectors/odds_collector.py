@@ -7,8 +7,10 @@ from src.collectors.db_handler import salvar_odd
 # Mapeamento das ligas para o formato da The Odds API
 LIGAS_ODDS = {
     "Brasileirão Série A": "soccer_brazil_campeonato",
+    "Brasileirão Série B": "soccer_brazil_serie_b",
     "Premier League":      "soccer_epl",
     "Champions League":    "soccer_uefa_champs_league",
+    "Bundesliga":          "soccer_germany_bundesliga",
 }
 
 BASE_URL  = "https://api.the-odds-api.com/v4/sports"
