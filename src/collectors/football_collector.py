@@ -12,7 +12,6 @@ LIGAS = {
     "Premier League":      {"id": 39, "season": 2025},
     "Champions League":    {"id": 2,  "season": 2025},
     "Bundesliga":          {"id": 78, "season": 2025},
-
 }
 
 BASE_URL = "https://v3.football.api-sports.io"
@@ -26,14 +25,18 @@ def coletar_jogos_do_dia():
     hoje = date.today().strftime("%Y-%m-%d")
     total_salvos = 0
 
-    for nome_liga, liga_id in LIGAS.items():
-        logger.info(f"Coletando jogos de hoje — {nome_liga} (ID {liga_id})")
+    for nome_liga, liga_info in LIGAS.items():
+        logger.info(f"Coletando jogos de hoje — {nome_liga} (ID {liga_info['id']})")
 
         try:
             resp = requests.get(
                 f"{BASE_URL}/fixtures",
                 headers=HEADERS,
-                params={"league": liga_id, "date": hoje, "season": 2025},
+                params={
+                    "league":  liga_info["id"],
+                    "date":    hoje,
+                    "season":  liga_info["season"],
+                },
                 timeout=15
             )
             resp.raise_for_status()
@@ -43,15 +46,15 @@ def coletar_jogos_do_dia():
             logger.info(f"  → {len(fixtures)} jogo(s) encontrado(s)")
 
             for f in fixtures:
-                fixture  = f["fixture"]
-                teams    = f["teams"]
-                goals    = f["goals"]
-                league   = f["league"]
+                fixture = f["fixture"]
+                teams   = f["teams"]
+                goals   = f["goals"]
+                league  = f["league"]
 
                 jogo = {
                     "fixture_id": fixture["id"],
                     "liga":       nome_liga,
-                    "liga_id":    liga_id,
+                    "liga_id":    liga_info["id"],
                     "temporada":  league["season"],
                     "data_jogo":  fixture["date"],
                     "time_casa":  teams["home"]["name"],
